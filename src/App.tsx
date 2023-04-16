@@ -14,6 +14,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <h1>Still working on the app, nothing to see here folks</h1>
       <Router>
         <Routes>
           <Route path="/" component={Calculator} />
