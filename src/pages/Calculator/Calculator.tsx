@@ -1,6 +1,10 @@
 import { render } from "solid-js/web";
 import { createSignal, createEffect } from "solid-js";
+import ErrorHandeler from "../../types/ErrorHandeler";
 import './Calculator.scss';
+import { insert, get } from '../../api/database';
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 
 function Calculator() {
@@ -9,7 +13,6 @@ function Calculator() {
 
     const calculate_handeler = (e: any) => {
         e.preventDefault();
-        console.log(value());
 
         const [numbers, operators] = split(value());
 
@@ -26,7 +29,24 @@ function Calculator() {
             return;
         }
 
+        const itemID = get().length;
 
+        const response = insert({
+            id: itemID,
+            equation: value(),
+            result: result(),
+        });
+
+        console.log({
+            response,
+            localStorage: get(),
+        });
+
+        if (response.error) {
+            setValue('Invalid input');
+            setResult(NaN.toString());
+            return;
+        }
     }
 
 

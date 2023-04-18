@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "@solidjs/router": "^0.8.2",
+    "dotenv": "^16.0.3",
+    "pouchdb": "^8.0.1",
+    "pouchdb-browser": "^8.0.1",
     "sass": "^1.62.0",
     "solid-js": "^1.6.10"
   }
